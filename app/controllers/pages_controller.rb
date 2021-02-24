@@ -3,5 +3,6 @@ class PagesController < ApplicationController
 
   def home
     @technologies = Technology.all
+    # @message = Message.new
   end
 end
