@@ -1,2 +1,10 @@
 <%= image_tag 'edu.jpeg', class: 'avatar-bordered' %>
 <h1>Pedro Eduardo Silva</h1>
+
+<div>
+<% @technologies.each do |technology| %>
+    <%= technology.name %>
+    <%= technology.description %>
+    <%= image_tag technology.photo, height: 300, width: 400, crop: :fill %>
+<% end %>
+</div>

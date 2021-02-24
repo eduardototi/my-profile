@@ -14,9 +14,9 @@ class TechnologiesController < ApplicationController
     end
 
     def create
-        @technology = Technology.new(technologie_params)
+        @technology = Technology.new(technology_params)
         if @technology.save
-            redirect_to technologies_path
+            redirect_to root_path
         else
             render :new
     end
@@ -24,7 +24,7 @@ class TechnologiesController < ApplicationController
 
     def destroy
         @technology.destroy
-        redirect_to technologies_path
+        redirect_to root_path
     end
 
     def edit
@@ -32,7 +32,7 @@ class TechnologiesController < ApplicationController
 
     def update
         if @technology.update(technology_params)
-            redirect_to technology_path(@technology)
+            redirect_to root_path
         else
             render :edit
         end
@@ -45,6 +45,6 @@ class TechnologiesController < ApplicationController
     end
 
     def technology_params
-        params.require(:technology).permit(:name, :description)
+        params.require(:technology).permit(:name, :description, :photo)
     end
 end
