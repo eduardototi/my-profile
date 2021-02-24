@@ -5,6 +5,8 @@
     <% @technologies.each do |technology| %>
         <%= technology.name %>
         <%= technology.description %>
-        <%= image_tag technology.photo, height: 200, width: 200, crop: :fill %>
+        <%= image_tag technology.photo, height: 100, width: 100, crop: :fill %>
     <% end %>
 </div>
+
+<%= render 'messages/new', message: @message %>
