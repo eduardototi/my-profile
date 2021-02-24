@@ -1,4 +1,6 @@
 class MessagesController < ApplicationController
+    
+    skip_before_action :authenticate_user!, only: [ :new, :create ]
 
     def new
         @message = Message.new
@@ -8,6 +10,7 @@ class MessagesController < ApplicationController
         @message = Message.new(message_params)
         if @message.save
           flash[:success] = "Contato enviado com sucesso"
+          redirect_to root_path
         else
           flash[:error] = "Contato não enviado"
           render 'new'
