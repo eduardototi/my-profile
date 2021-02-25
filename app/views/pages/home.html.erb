@@ -1,7 +1,7 @@
-<div class="container">
+<div class="container home">
 
     <div class="header mt-5">
-        <%= image_tag 'edu.jpeg', class: 'avatar-bordered' %>
+        <span><%= image_tag 'edu.jpeg', class: 'avatar-bordered' %></span>
         <h1>Pedro Eduardo Silva</h1>
         <h2>Desenvolvedor Full Stack</h2>
     </div>
@@ -35,6 +35,21 @@
         </a>
     </div>
     
-    <%= render 'messages/new', message: @message %>
+    <div class="contact">
+        <%= render 'messages/new', message: @message %>
+        <div class="works">
+            <h3 class="text-center">Projetos:</h3>
+            <table class="table table-borderless">
+                <tbody>
+                    <tr>
+                        <td><a href="http://desapega-baby.herokuapp.com" target="_blank">Desapega Baby</a></td>
+                    </tr>
+                    <tr>
+                        <td><a href="http://rarosapp.com" target="_blank">R@ros</a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>          
 </div>
 
