@@ -1,12 +1,40 @@
 <div class="container">
-    <%= image_tag 'edu.jpeg', class: 'avatar-bordered' %>
-    <h1>Pedro Eduardo Silva</h1>
-    <h2>Desenvolvedor Full Stack</h2>
-    <% @technologies.each do |technology| %>
-        <%= technology.name %>
-        <%= technology.description %>
-        <%= image_tag technology.photo, height: 100, width: 100, crop: :fill %>
-    <% end %>
+
+    <div class="header mt-5">
+        <%= image_tag 'edu.jpeg', class: 'avatar-bordered' %>
+        <h1>Pedro Eduardo Silva</h1>
+        <h2>Desenvolvedor Full Stack</h2>
+    </div>
+
+    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+            <% @technologies.each.with_index(0) do |technology, index| %>
+                <li data-target="#carouselExampleIndicators" data-slide-to="<%= index %>" class="<%= index.zero? ? 'active' : '' %>"></li>
+            <% end %>
+        </ol>
+        <div class="carousel-inner">
+            <% @technologies.each.with_index(0) do |technology, index| %>
+                <div class="carousel-item <%= index.zero? ? 'active' : '' %>">
+                    <div class="card-product">
+                        <%= image_tag technology.photo, height: 100, width: 100, crop: :fill %>
+                        <div class="card-product-infos">
+                            <h2><%= technology.name %></h2>
+                            <p><%= technology.description %></p>
+                        </div>
+                    </div>
+                </div>
+            <% end %>
+        </div>
+        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
+    
+    <%= render 'messages/new', message: @message %>
 </div>
 
-<%= render 'messages/new', message: @message %>
