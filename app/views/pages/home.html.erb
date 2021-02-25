@@ -1,12 +1,55 @@
-<div class="container">
-    <%= image_tag 'edu.jpeg', class: 'avatar-bordered' %>
-    <h1>Pedro Eduardo Silva</h1>
-    <h2>Desenvolvedor Full Stack</h2>
-    <% @technologies.each do |technology| %>
-        <%= technology.name %>
-        <%= technology.description %>
-        <%= image_tag technology.photo, height: 100, width: 100, crop: :fill %>
-    <% end %>
+<div class="container home">
+
+    <div class="header mb-5">
+        <span><%= image_tag 'edu.jpeg', class: 'avatar-bordered' %></span>
+        <h1>Pedro Eduardo Silva</h1>
+        <h2>Desenvolvedor Full Stack</h2>
+    </div>
+
+    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+            <% @technologies.each.with_index(0) do |technology, index| %>
+                <li data-target="#carouselExampleIndicators" data-slide-to="<%= index %>" class="<%= index.zero? ? 'active' : '' %>"></li>
+            <% end %>
+        </ol>
+        <div class="carousel-inner">
+            <% @technologies.each.with_index(0) do |technology, index| %>
+                <div class="carousel-item <%= index.zero? ? 'active' : '' %>">
+                    <div class="card-product">
+                        <%= image_tag technology.photo, height: 100, width: 100, crop: :fill %>
+                        <div class="card-product-infos">
+                            <h2><%= technology.name %></h2>
+                            <p><%= technology.description %></p>
+                        </div>
+                    </div>
+                </div>
+            <% end %>
+        </div>
+        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
+    
+    <div class="contact">
+        <%= render 'messages/new', message: @message %>
+        <div class="works">
+            <h3 class="text-center">Projetos:</h3>
+            <table class="table table-borderless">
+                <tbody>
+                    <tr>
+                        <td><a href="http://desapega-baby.herokuapp.com" target="_blank">Desapega Baby</a></td>
+                    </tr>
+                    <tr>
+                        <td><a href="http://rarosapp.com" target="_blank">R@ros</a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>          
 </div>
 
-<%= render 'messages/new', message: @message %>

@@ -1,5 +1,5 @@
 class TechnologiesController < ApplicationController
-    skip_before_action :authenticate_user!
+    
     before_action :set_technologies, only: [:show, :edit, :destroy, :update]
     
     def index
