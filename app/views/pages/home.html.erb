@@ -1,7 +1,7 @@
 <div class="container home">
 
     <div class="header mb-5">
-        <span><%= image_tag 'edu.jpeg', class: 'avatar-bordered' %></span>
+        <span><%= image_tag 'edu.jpg', class: 'avatar-bordered' %></span>
         <h1>Pedro Eduardo Silva</h1>
         <h2>Desenvolvedor Full Stack</h2>
     </div>
@@ -16,7 +16,7 @@
             <% @technologies.each.with_index(0) do |technology, index| %>
                 <div class="carousel-item <%= index.zero? ? 'active' : '' %>">
                     <div class="card-product">
-                        <%= image_tag technology.photo, height: 100, width: 100, crop: :fill %>
+                        <%= cl_image_tag technology.photo, height: 100, width: 100, crop: :fill %>
                         <div class="card-product-infos">
                             <h2><%= technology.name %></h2>
                             <p><%= technology.description %></p>
